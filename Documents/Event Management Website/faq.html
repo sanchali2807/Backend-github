@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ Page</title>
+    
+</head>
+<body>
+    <style>
+        body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to bottom left, #b5e4fb, #0a0a0b); /* Dark gradient background */
+    color: #f0f0f0; /* Light text color for readability */
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    background: #0e0e0f; /* Dark grey header background */
+    padding: 20px;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 2.5em;
+    color: #e0e0e0;
+}
+
+.header input {
+    margin-top: 10px;
+    padding: 12px;
+    width: 80%;
+    max-width: 600px;
+    border: 2px solid #f2e6fa; /* Violet border */
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #2c2c2c; /* Dark input background */
+    color: #f0f0f0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 0.3s, background-color 0.3s;
+}
+
+.header input:focus {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+    background-color: #444;
+    border-color: #5184f3; /* Lighter violet border on focus */
+}
+
+.container {
+    width: 90%;
+    max-width: 800px;
+    margin: auto;
+    padding: 100px;
+}
+
+.faq {
+    background: #1e1e1e; /* Darker grey for the FAQ section */
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    transition: box-shadow 0.3s;
+}
+
+.faq:hover {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.9);
+}
+
+.accordion {
+    background-color: #a5c5f0; /* Violet background */
+    color: #0e0d0d; /* White text color */
+    cursor: pointer;
+    padding: 15px;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 18px;
+    border-radius: 10px;
+    width: 100%;
+    position: relative;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    margin-bottom: 10px;
+}
+
+.accordion::after {
+    content: '▼';
+    font-size: 18px;
+    color: #030303; /* White arrow */
+    transition: transform 0.3s;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.accordion.active::after {
+    transform: rotate(-180deg); /* Rotate the arrow when active */
+}
+
+.accordion:hover {
+    background-color: #3e5bee; /* Slightly lighter violet on hover */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.panel {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 15px;
+    background-color: #333333; /* Dark grey for panel */
+    border-radius: 0 0 10px 10px;
+    transition: max-height 0.3s ease-out, padding 0.3s;
+}
+
+.panel.show {
+    padding: 15px;
+    max-height: 500px; /* Arbitrary large value */
+}
+
+.panel p {
+    margin: 0;
+    color: #d0d0d0; /* Light grey text for readability */
+    line-height: 1.6;
+}
+
+.accordion.active, .accordion:hover {
+    background-color: #cdf7fd; /* Light purple for active and hover states */
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+    }
+
+    .header input {
+        width: 100%;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    .accordion {
+        font-size: 16px;
+    }
+}
+
+    </style>
+    
+    <div class="header">
+        <h1>FAQ</h1>
+        <input type="text" id="search" placeholder="Search questions...">
+    </div>
+
+    <div class="container">
+        <div class="faq">
+            <button class="accordion">What services do you offer?</button>
+            <div class="panel">
+                <p>We offer a full range of event management services including planning, coordination, vendor management, on-site execution, and post-event follow-up. Whether it's a wedding, corporate event, or private party, we handle all the details to make your event a success.</p>
+            </div>
+
+            <button class="accordion">How can I request event management services for my college event?</button>
+            <div class="panel">
+                <p>You can request our services by filling out the event request form available on our website under the ‘Event Services’ section. Alternatively, you can contact our office directly via email or phone to discuss your event needs.</p>
+            </div>
+
+            <button class="accordion">What types of events do you manage?</button>
+            <div class="panel">
+                <p>We handle a wide range of events including academic conferences, seminars, workshops, student parties, graduation ceremonies, and more. Our team is equipped to manage both small and large-scale events, ensuring that all details are meticulously planned and executed.</p>
+            </div>
+
+            <button class="accordion">Can student organizations request event management support?</button>
+            <div class="panel">
+                <p>Absolutely! We encourage student organizations to reach out to us for assistance with their events. We can help with planning, logistics, and execution to ensure that your event runs smoothly.</p>
+            </div>
+
+            <button class="accordion">How early should I book your services for an event?</button>
+            <div class="panel">
+                <p>For major events, it's best to contact us at least 2-3 months in advance to ensure ample time for planning and coordination. For smaller events, 3-4 weeks’ notice is usually sufficient. However, the earlier you contact us, the better we can accommodate your needs.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+    var accordions = document.getElementsByClassName("accordion");
+
+    for (var i = 0; i < accordions.length; i++) {
+        accordions[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+            }
+        });
+    }
+
+    // Search functionality
+    document.getElementById('search').addEventListener('input', function() {
+        var searchTerm = this.value.toLowerCase();
+        var accItems = document.getElementsByClassName('accordion');
+        var panels = document.getElementsByClassName('panel');
+
+        for (var i = 0; i < accItems.length; i++) {
+            var text = accItems[i].textContent.toLowerCase();
+            if (text.includes(searchTerm)) {
+                accItems[i].style.display = '';
+                panels[i].style.display = '';
+            } else {
+                accItems[i].style.display = 'none';
+                panels[i].style.display = 'none';
+            }
+        }
+    });
+});
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Management - Sign Up</title>
+    <style>
+       
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg,#010ab5, #101010, #03d2fc);
+            background-size: 300% 300%;
+            animation: gradientAnimation 7s ease infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            background-color: rgba(20, 20, 20, 0.9);
+            border-radius: 15px;
+            padding: 40px;
+            width: 400px;
+            z-index: 1;
+            position: relative;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.6), 0px 0px 20px rgba(0, 255, 255, 0.3);
+            overflow: hidden;
+            animation: borderAnimation 3s linear infinite;
+            border: 5px solid transparent;
+        }
+
+        @keyframes borderAnimation {
+            0% {
+                border-color: rgba(0, 255, 255, 0);
+                box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+            }
+            50% {
+                border-color: rgba(0, 255, 255, 1);
+                box-shadow: 0 0 20px rgba(0, 255, 255, 1), 0 0 30px rgba(0, 255, 255, 0.5);
+            }
+            100% {
+                border-color: rgba(0, 255, 255, 0);
+                box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+            }
+        }
+
+        h2 {
+            text-align: center;
+            color: #ffffff;
+            margin-bottom: 25px;
+            font-size: 28px;
+            text-shadow: 0px 0px 15px #00ffff, 0px 0px 30px rgba(0, 255, 255, 0.7);
+            animation: flicker 1.5s ease-in-out infinite;
+        }
+
+        @keyframes flicker {
+            0%, 50% {
+                text-shadow: 0px 0px 15px #00ffff, 0px 0px 30px rgba(0, 255, 255, 0.7);
+            }
+            50% {
+                text-shadow: 0px 0px 8px rgba(0, 255, 255, 0.4);
+            }
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            transition: opacity 0.5s ease;
+        }
+
+        .input-group label {
+            font-size: 14px;
+            color: #ffffff;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #333;
+            background-color: #121212;
+            color: #fff;
+            font-size: 16px;
+            transition: box-shadow 0.3s ease-in-out, border-color 0.3s;
+            box-shadow: inset 0 0 8px rgba(0, 255, 255, 0.4);
+        }
+
+        .input-group input:focus {
+            border-color: #00ffff;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.7), inset 0px 0px 12px rgba(0, 255, 255, 0.8);
+        }
+
+        .signup-btn {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #00ffff, #1e90ff);
+            border: none;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            margin-top: 15px;
+        }
+
+        .signup-btn:hover {
+            background: linear-gradient(135deg, #1e90ff, #00ffff);
+            transform: translateY(-2px);
+            box-shadow: 0px 5px 20px rgba(0, 255, 255, 0.8);
+        }
+
+        .signup-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%) scale(0);
+            border-radius: 50%;
+            transition: transform 0.6s ease;
+        }
+
+        .signup-btn:hover::before {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .signup {
+            text-align: center;
+            margin-top: 20px;
+            color: white;
+        }
+
+        .signup a {
+            color: #00ffff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .signup a:hover {
+            color: #1e90ff;
+        }
+
+        .background-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .background-elements span {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(0, 255, 255, 0.3);
+            opacity: 0.7;
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="background-elements">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <div class="container">
+        <h2>Sign Up for Event Management</h2>
+        <form id="signup-form">
+            <div class="input-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" placeholder="Enter your username" required>
+            </div>
+            <div class="input-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" placeholder="Enter your email" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter your password" required>
+            </div>
+            <div class="input-group">
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" id="confirm-password" placeholder="Confirm your password" required>
+            </div>
+            <button type="submit" class="signup-btn">Sign Up</button>
+            <p class="error-message" id="error-message"></p>
+        </form>
+
+        <div class="signup">
+            <p>Already have an account? <a href="login.html">Login here</a></p>
+        </div>
+    </div>
+    <script>
+        document.getElementById('signup-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+        
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+            const errorMessage = document.getElementById('error-message');
+        
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/;
+            const passwordMinLength = 6;
+            const hasUpperCase = /[A-Z]/.test(password);
+            const hasLowerCase = /[a-z]/.test(password);
+            const hasNumbers = /\d/.test(password);
+            const hasSpecialChars = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+        
+            if (!emailPattern.test(email)) {
+                errorMessage.textContent = 'Please enter a valid email address in the format mail@abc.com.';
+                return;
+            }
+        
+            if (password.length < passwordMinLength || 
+                !hasUpperCase || 
+                !hasLowerCase || 
+                !hasNumbers || 
+                !hasSpecialChars) {
+                errorMessage.textContent = 'Password must be at least 6 characters long and include uppercase, lowercase, number, and special character.';
+                return;
+            }
+        
+            if (password !== confirmPassword) {
+                errorMessage.textContent = 'Passwords do not match.';
+                return;
+            }
+        
+            
+            const signupData = {
+                username: username,
+                email: email,
+                password: password
+            };
+        
+            fetch('http://localhost:3000/users', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(signupData)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                errorMessage.textContent = 'Signup successful! Redirecting to login page...';
+                console.log('Data saved:', data);
+                
+                // Redirect to login page after a short delay
+                setTimeout(() => {
+                    window.location.href = 'login.html'; // Adjust this path if needed
+                }, 2000); // Redirects after 2 seconds
+            })
+            .catch(error => {
+                errorMessage.textContent = 'Error saving data.';
+                console.error('Error:', error);
+            });
+        });
+    </script>
+    
+</body>
+</html>
