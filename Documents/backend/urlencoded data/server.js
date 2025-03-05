@@ -1,7 +1,8 @@
-commit on 27 feb:const express = require("express");
+
+const express = require("express");
 const app= express();
 
-//moddleware to convert urlencoded data
+//middleware to convert urlencoded data
 
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
