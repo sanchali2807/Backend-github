@@ -1,30 +1,32 @@
 const express = require("express");
 const app= express();
 
-//moddleware to convert urlencoded data
+// Middleware to convert urlencoded data
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
-app.use(express.urlencoded({extended:true}))
-app.use(express.json())
+let userData = [];
 
-let userData =[];
+// Serve the signup page
+app.get("/signup", (req, res) => {
+    res.sendFile(__dirname + "/signup.html");
+});
 
-app.get("/signup",(req,res)=>{
-    res.sendFile(__dirname+"/signup.html")
-})
-
-app.post("/signup",(req,res)=>{
-    let {username,useremail,userpassword} = req.body;
-    let newUser={
-        name:username,
-        email:useremail,
-        password:userpassword
-    }
+// Handle user signup
+app.post("/signup", (req, res) => {
+    let { username, useremail, userpassword } = req.body;
+    let newUser = {
+        name: username,
+        email: useremail,
+        password: userpassword
+    };
     userData.push(newUser);
 
+    // Send a response back to the client
     res.send(userData);
-})
+});
 
-
-app.listen(3000,()=>{
-    console.log("server is started");
-})
+// Start the server
+app.listen(3000, () => {
+    console.log("Server is started on port 3000");
+});
