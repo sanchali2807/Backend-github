@@ -74,16 +74,33 @@
 // async returns a promise 
 // await pauses the execution unitl promise is resolved
 // await written inside the async 
-function getData(){
-    return new Promise(resolve =>{
-        setTimeout(() => {
-            resolve("Data 1");
-        },2000);
-    })
-}
-async function fetchData(){
-    console.log("fetching");
-    const data = await getData();
-    console.log(data);
-}
-fetchData();
+// function getData(){
+//     return new Promise(resolve =>{
+//         setTimeout(() => {
+//             resolve("Data 1");
+//         },2000);
+//     })
+// }
+// async function fetchData(){
+//     console.log("fetching");
+//     const data = await getData();
+//     console.log(data);
+// }
+// fetchData();
+
+
+
+// event loop
+
+// call stack : synchronous code run
+// web api : function like setTimeout function that delays  or fetch or DOM events
+// micro task queue : Promise .then() are micro task or async 
+// call back queue : macroTask queue
+// event loop handler : check if stack is emptyt or not , if it is pick data from the abpve queue
+
+// All setTiemOUt function or interval function are under maro task
+
+
+// macro and micro
+// micro task has the highest priority set in asynchrnous code
+
