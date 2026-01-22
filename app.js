@@ -70,8 +70,10 @@
 
 
 
-//async and await
-
+//async and await are sugar on coat on promise
+// async returns a promise 
+// await pauses the execution unitl promise is resolved
+// await written inside the async 
 function getData(){
     return new Promise(resolve =>{
         setTimeout(() => {
