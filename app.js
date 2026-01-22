@@ -31,13 +31,37 @@
 
 
 
-//callback 
+//callback
+// asynchronous  
 
-function fetchData(callBack){
-    setTimeout(()=>{
-        callBack("recieved");
-    },2000);
-}
-fetchData((data) => {
-    console.log(data);
+// function fetchData(callBack){
+//     setTimeout(()=>{
+//         callBack("recieved");
+//     },2000);
+// }
+// fetchData((data) => {
+//     console.log(data);
+// })
+
+
+
+
+// promises
+// three states pending , resolve , reject
+// by default in pending state
+
+
+const mypromise = new Promise((resolve,reject)=>{
+    let success = true;
+    if(success)resolve('Done!!');
+    else reject("Lost!!");
+});
+
+/// call the promise
+mypromise
+.then(result => { // success handle
+    console.log(result);
 })
+.catch(error =>{ // error hndle
+    console.log(error);
+});
