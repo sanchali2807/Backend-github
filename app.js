@@ -23,5 +23,8 @@
 
 function wait(){
     let start = Date.now();
-    while(Date.now())
+    while(Date.now()){
+        
+    }
 }
+setTimeout()
