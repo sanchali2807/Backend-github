@@ -51,17 +51,37 @@
 // by default in pending state
 
 
-const mypromise = new Promise((resolve,reject)=>{
-    let success = true;
-    if(success)resolve('Done!!');
-    else reject("Lost!!");
-});
+// const mypromise = new Promise((resolve,reject)=>{
+//     let success = false;
+//     if(success)resolve('Done!!');
+//     else reject("Lost!!");
+// });
 
-/// call the promise
-mypromise
-.then(result => { // success handle
-    console.log(result);
-})
-.catch(error =>{ // error hndle
-    console.log(error);
-});
+// /// call the promise
+// mypromise
+// .then(result => { // success handle
+//     console.log(result);
+// })
+// .catch(error =>{ // error hndle
+//     console.log(error);
+// });
+
+
+
+
+
+//async and await
+
+function getData(){
+    return new Promise(resolve =>{
+        setTimeout(() => {
+            resolve("Data 1");
+        },2000);
+    })
+}
+async function fetchData(){
+    console.log("fetching");
+    const data = await getData();
+    console.log(data);
+}
+fetchData();
