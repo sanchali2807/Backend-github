@@ -104,3 +104,13 @@
 // macro and micro
 // micro task has the highest priority set in asynchrnous code
 
+console.log("!");
+setTimeout(()=>{
+    console.log("@");
+},0);
+Promise.resolve().then(()=>{
+    console.log("#");
+})
+console.log("$");
+
+// first blocking then non blocking and in non blocking first promise because it is micro then setTimeout because it is macro
