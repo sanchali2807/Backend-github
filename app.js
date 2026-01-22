@@ -21,10 +21,10 @@
 // console.log("Multiplication:", multiply(a, b));
 // console.log("Division:", divide(a, b));
 
-function wait(){
-    let start = Date.now();
-    while(Date.now()){
-        
-    }
+function one(){
+    two();
 }
-setTimeout()
+function two(){
+    console.log("two");
+}
+one();
