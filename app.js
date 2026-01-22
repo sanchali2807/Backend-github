@@ -21,10 +21,23 @@
 // console.log("Multiplication:", multiply(a, b));
 // console.log("Division:", divide(a, b));
 
-function one(){
-    two();
+// function one(){
+//     two();
+// }
+// function two(){
+//     console.log("two");
+// }
+// one();
+
+
+
+//callback 
+
+function fetchData(callBack){
+    setTimeout(()=>{
+        callBack("recieved");
+    },2000);
 }
-function two(){
-    console.log("two");
-}
-one();
+fetchData((data) => {
+    console.log(data);
+})
